@@ -48,6 +48,14 @@ describe('Gems API', () => {
 
     });
 
+    it('get one gem', () => {
+        return chai.request(app)
+            .get(`/gems/${garnet._id}`)
+            .then(({ body }) => {
+                assert.deepEqual(body, [garnet]);
+            });
+    });
+
     after(() => mongo.client.close());
 
 });
