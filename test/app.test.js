@@ -12,11 +12,19 @@ describe('Gems API', () => {
         return mongo.then(db => db.collection('gems').remove());
     });
 
-    it('save a gem', () => {
+    let gem = {
+        name: 'garnet',
+        type: 'fusion'
+    };
+
+    it.only('save a gem', () => {
         return chai.request(app)
             .post('/gems')
+            .send(gem)
             .then(({ body }) => {
                 assert.ok(body._id);
+                assert.equal(body.name, gem.name);
+                gem = body;
             });
     });
 
@@ -24,7 +32,7 @@ describe('Gems API', () => {
         return chai.request(app)
             .get('/gems')
             .then(({ body }) => {
-                assert.deepEqual(body, []);
+                assert.deepEqual(body, [gem]);
             });
     });
 
