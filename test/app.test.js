@@ -12,28 +12,40 @@ describe('Gems API', () => {
         return mongo.then(db => db.collection('gems').remove());
     });
 
-    let gem = {
+    let garnet = {
         name: 'garnet',
         type: 'fusion'
+    };
+
+    let steven = {
+        name: 'steven',
+        type: 'human/quartz'
     };
 
     it('save a gem', () => {
         return chai.request(app)
             .post('/gems')
-            .send(gem)
+            .send(garnet)
             .then(({ body }) => {
                 assert.ok(body._id);
-                assert.equal(body.name, gem.name);
-                gem = body;
+                assert.equal(body.name, garnet.name);
+                garnet = body;
             });
     });
 
     it('gets all gems', () => {
         return chai.request(app)
-            .get('/gems')
+            .post('/gems')
+            .send(steven)
             .then(({ body }) => {
-                assert.deepEqual(body, [gem]);
+                steven = body;
+                return chai.request(app)
+                    .get('/gems')
+                    .then(({ body }) => {
+                        assert.deepEqual(body, [garnet, steven]);
+                    });
             });
+
     });
 
     after(() => mongo.client.close());
