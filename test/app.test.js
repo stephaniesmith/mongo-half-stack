@@ -12,14 +12,6 @@ describe('Gems API', () => {
         return mongo.then(db => db.collection('gems').remove());
     });
 
-    it('hello world', () => {
-        return chai.request(app)
-            .get('/')
-            .then(response => {
-                assert.equal(response.text, 'hello world');
-            });
-    });
-
     it('has no gems', () => {
         assert(true);
     });
