@@ -12,7 +12,7 @@ describe('Gems API', () => {
         return mongo.then(db => db.collection('gems').remove());
     });
 
-    it('has no gems', () => {
+    it('save a gem', () => {
         assert(true);
     });
 
