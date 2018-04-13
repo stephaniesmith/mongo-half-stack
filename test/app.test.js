@@ -13,7 +13,11 @@ describe('Gems API', () => {
     });
 
     it('save a gem', () => {
-        assert(true);
+        return chai.request(app)
+            .post(/gems)
+            .then(({ body }) => {
+                assert.deepEqual(body, gem);
+            });
     });
 
     after(() => mongo.client.close());
