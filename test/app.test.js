@@ -20,6 +20,14 @@ describe('Gems API', () => {
             });
     });
 
+    it('gets all gems', () => {
+        return chai.request(app)
+            .get('/gems')
+            .then(({ body }) => {
+                assert.deepEqual(body, []);
+            });
+    });
+
     after(() => mongo.client.close());
 
 });
