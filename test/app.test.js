@@ -17,7 +17,7 @@ describe('Gems API', () => {
         type: 'fusion'
     };
 
-    it.only('save a gem', () => {
+    it('save a gem', () => {
         return chai.request(app)
             .post('/gems')
             .send(gem)
