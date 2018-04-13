@@ -12,8 +12,12 @@ describe('Gems API', () => {
         return mongo.then(db => db.collection('gems').remove());
     });
 
-    it('has no gems', () => {
-        assert(true);
+    it('save a gem', () => {
+        return chai.request(app)
+            .post('/gems')
+            .then(({ body }) => {
+                assert.ok(body._id);
+            });
     });
 
     after(() => mongo.client.close());
