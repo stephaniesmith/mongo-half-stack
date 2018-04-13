@@ -14,9 +14,9 @@ describe('Gems API', () => {
 
     it('save a gem', () => {
         return chai.request(app)
-            .post(/gems)
+            .post('/gems')
             .then(({ body }) => {
-                assert.deepEqual(body, gem);
+                assert.ok(body._id);
             });
     });
 
