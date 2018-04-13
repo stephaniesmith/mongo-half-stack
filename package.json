@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/stephaniesmith/mongo-half-stack#readme",
   "dependencies": {
+    "dotenv": "^5.0.1",
     "mongodb": "^3.0.6"
   },
   "devDependencies": {
