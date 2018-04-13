@@ -1,0 +1,38 @@
+{
+  "name": "mongo-half-stack",
+  "version": "1.0.0",
+  "description": "Mongo DB ===",
+  "main": "server.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "lint": "npm run lint",
+    "test": "mocha",
+    "test:watch": "nodemon --exec 'npm run test -- -w'",
+    "start": "node server.js",
+    "start:dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephaniesmith/mongo-half-stack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stephaniesmith/mongo-half-stack/issues"
+  },
+  "homepage": "https://github.com/stephaniesmith/mongo-half-stack#readme",
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "mongodb": "^3.0.6"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "eslint": "^4.19.1",
+    "mocha": "^5.1.0",
+    "nodemon": "^1.17.3"
+  }
+}
