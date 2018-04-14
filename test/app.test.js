@@ -56,6 +56,16 @@ describe('Gems API', () => {
             });
     });
 
+    it('update gem by id', () => {
+        garnet.unfused = 'ruby & sapphire';
+        return chai.request(app)
+            .put(`/gems/${garnet._id}`)
+            .send(garnet)
+            .then(({ body }) => {
+                assert.deepEqual(body, garnet);
+            });
+    });
+
     after(() => mongo.client.close());
 
 });
