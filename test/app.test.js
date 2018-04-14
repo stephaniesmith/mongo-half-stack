@@ -61,8 +61,12 @@ describe('Gems API', () => {
         return chai.request(app)
             .put(`/gems/${steven._id}`)
             .send(steven)
-            .then(({ body }) => {
-                assert.deepEqual(body, steven);
+            .then(() => {
+                return chai.request(app)
+                    .get(`/gems/${steven._id}`)
+                    .then(({ body }) => {
+                        assert.deepEqual(body, [steven]);
+                    });
             });
     });
 
