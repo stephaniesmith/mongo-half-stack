@@ -57,12 +57,12 @@ describe('Gems API', () => {
     });
 
     it('update gem by id', () => {
-        garnet.unfused = 'ruby & sapphire';
+        steven.type = 'rose quartz??';
         return chai.request(app)
-            .put(`/gems/${garnet._id}`)
-            .send(garnet)
+            .put(`/gems/${steven._id}`)
+            .send(steven)
             .then(({ body }) => {
-                assert.deepEqual(body, garnet);
+                assert.deepEqual(body, steven);
             });
     });
 
