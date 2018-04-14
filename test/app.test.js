@@ -56,6 +56,20 @@ describe('Gems API', () => {
             });
     });
 
+    it('update gem by id', () => {
+        steven.type = 'rose quartz??';
+        return chai.request(app)
+            .put(`/gems/${steven._id}`)
+            .send(steven)
+            .then(() => {
+                return chai.request(app)
+                    .get(`/gems/${steven._id}`)
+                    .then(({ body }) => {
+                        assert.deepEqual(body, [steven]);
+                    });
+            });
+    });
+
     after(() => mongo.client.close());
 
 });
