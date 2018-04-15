@@ -22,6 +22,11 @@ describe('Gems API', () => {
         type: 'human/quartz'
     };
 
+    let pink = {
+        name: 'pink dimond',
+        type: 'dimond/shattered?'
+    };
+
     it('save a gem', () => {
         return chai.request(app)
             .post('/gems')
@@ -67,6 +72,14 @@ describe('Gems API', () => {
                     .then(({ body }) => {
                         assert.deepEqual(body, [steven]);
                     });
+            });
+    });
+
+    it('remove gem by id', () => {
+        return chai.request(app)
+            .del(`/gems/${garnet._id}`)
+            .then(({ body }) => {
+                assert.deepEqual(body, { removed: true });
             });
     });
 
