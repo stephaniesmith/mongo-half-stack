@@ -77,18 +77,12 @@ describe('Gems API', () => {
 
     it('remove gem by id', () => {
         return chai.request(app)
-            .post('/gems')
-            .send(pink)
-            .then(({ body }) => {
-                pink = body;
+            .del(`/gems/${garnet._id}`)
+            .then(() => {
                 return chai.request(app)
-                    .del(`/gems/${pink._id}`)
-                    .then(() => {
-                        return chai.request(app)
-                            .get('/gems')
-                            .then(({ body }) => {
-                                assert.deepEqual(body, [garnet, steven]);
-                            });
+                    .get('/gems')
+                    .then(({ body }) => {
+                        assert.deepEqual(body, [steven]);
                     });
             });
     });
